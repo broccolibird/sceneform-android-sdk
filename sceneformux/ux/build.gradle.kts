@@ -14,6 +14,13 @@
  */
 plugins {
     id("com.android.library")
+    `maven-publish`
+    id("com.jfrog.bintray")
+}
+
+base {
+    group = "pro.streem.sceneform.ux"
+    archivesBaseName = "sceneform-ux"
 }
 
 android {
@@ -45,6 +52,18 @@ dependencies {
 
     implementation("androidx.appcompat:appcompat:${Versions.androidxAppcompatVersion}")
     implementation("com.google.android.material:material:${Versions.androidMaterialVersion}")
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            val sceneformArtifact by creating(MavenPublication::class) {
+                from(components["release"])
+                //artifact(javadocJar.get()) // TODO
+                artifactId = base.archivesBaseName
+            }
+        }
+    }
 }
 
 val compileUxAssets = tasks.registering {

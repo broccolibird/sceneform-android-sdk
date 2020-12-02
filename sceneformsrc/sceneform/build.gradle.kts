@@ -14,6 +14,13 @@
  */
 plugins {
     id("com.android.library")
+    `maven-publish`
+    id("com.jfrog.bintray")
+}
+
+base {
+    group = "pro.streem.sceneform"
+    archivesBaseName = "core"
 }
 
 android {
@@ -48,4 +55,16 @@ dependencies {
 
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("com.google.android.material:material:1.2.1")
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            val sceneformArtifact by creating(MavenPublication::class) {
+                from(components["release"])
+                //artifact(javadocJar.get()) // TODO
+                artifactId = base.archivesBaseName
+            }
+        }
+    }
 }

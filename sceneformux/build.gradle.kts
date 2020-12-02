@@ -15,6 +15,10 @@
 // Top-level build file where you can add configuration options common to
 // all sub-projects/modules.
 
+plugins {
+    id("com.jfrog.bintray") version Versions.gradleBintrayPlugin apply false
+}
+
 buildscript {
     repositories {
         google()
@@ -29,14 +33,51 @@ buildscript {
     }
 }
 
-allprojects {
+project(":sceneform") {
+    version = Versions.sceneformVersion
+}
+
+project(":ux") {
+    version = Versions.sceneformVersion
+}
+
+val bintrayProperties = java.util.Properties()
+val bintrayPropertiesFile = file("bintray.properties")
+if (bintrayPropertiesFile.exists()) {
+    bintrayProperties.load(java.io.FileInputStream(bintrayPropertiesFile))
+}
+val bintrayUser by extra(bintrayProperties["bintrayUser"] as String?)
+val bintrayApiKey by extra(bintrayProperties["bintrayApiKey"] as String?)
+
+subprojects {
+    val subproject = this
+
     repositories {
         google()
         jcenter()
         mavenLocal()
     }
-}
 
-//task clean(type: Delete) {
-//    delete rootProject.buildDir
-//}
+    plugins.withType<com.jfrog.bintray.gradle.BintrayPlugin> {
+        subproject.afterEvaluate {
+            configure<com.jfrog.bintray.gradle.BintrayExtension> {
+                user = bintrayUser
+                key = bintrayApiKey
+                setPublications("sceneformArtifact")
+                pkg(closureOf<com.jfrog.bintray.gradle.BintrayExtension.PackageConfig> {
+                    repo = "sceneform-android-sdk"
+                    name =
+                            "${subproject.group}:${subproject.convention.getPlugin<BasePluginConvention>().archivesBaseName}"
+                    userOrg = "streem"
+                    publish = true
+                    dryRun = false
+                    version.apply {
+                        name = subproject.version.toString()
+                        desc = "Sceneform Android SDK"
+                        released = java.util.Date().toString()
+                    }
+                })
+            }
+        }
+    }
+}

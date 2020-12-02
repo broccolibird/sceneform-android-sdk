@@ -1,4 +1,7 @@
 object Versions {
+    // Sceneform
+    const val sceneformVersion = "1.18.0"
+
     // Android build
     const val androidGradle = "4.1.1"
     const val compileSdkVersion = 30
@@ -9,4 +12,7 @@ object Versions {
 
     // Kotlin
     const val kotlinVersion = "1.4.20"
+
+    // Other
+    const val gradleBintrayPlugin = "1.8.5"
 }
