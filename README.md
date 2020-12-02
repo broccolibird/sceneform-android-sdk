@@ -1,7 +1,83 @@
-# Status: Archived
-This repository has been archived and is no longer maintained.
+## Streem's Sceneform Android SDK fork
 
-![status: inactive](https://img.shields.io/badge/status-inactive-red.svg)
+This repository contains Streem's fork of Google's Sceneform Android SDK. Google
+is no longer developing Sceneform, and released most of the source.
+
+The original contents of this README from the 1.16.0 open source release from
+Google are preserved at the bottom of this document, though users of Streem's 
+fork should follow the installation instructions below.
+
+The current version of Streem's fork is 1.18.0.
+
+### Installation
+
+Add the JCenter repository to your project `build.gradle` file:
+
+```gradle
+repositories {
+    ...
+    jcenter()
+    ...
+}
+```
+
+Add sceneform-ux and core to your dependencies in your module `build.gradle` file:
+
+```gradle
+dependencies {
+    ...
+    implementation "pro.streem.sceneform:core:1.18.0"
+    implementation "pro.streem.sceneform.ux:sceneform-ux:1.18.0"
+    ...
+}
+```
+
+If your project's minimum SDK version is less than 24, add this to your AndroidManifest:
+
+```
+    <uses-sdk tools:overrideLibrary="com.google.ar.sceneform, com.google.ar.sceneform.ux"/>
+```
+In this case it is your responsibility to check the current device's SDK level at runtime
+before using Sceneform functionality. If you try to use Sceneform on a device with SDK
+less than 24 it may crash your app.
+
+### Changelog
+
+#### 1.18.0
+
+* Updated to ARCore 1.21.0 and Filament 1.9.9.
+* Generated new .matc material files.
+* Migrated to AndroidX
+* Updated to latest Gradle and build tools.
+* Updated build target SDK to 30.
+* Converted build.gradle and settings.gradle files to Kotlin.
+* Added publishing of sceneform-ux and core AAR artifacts to JCenter, eliminating
+  the need to add the corresponding source trees to your project as Google
+  describes in the 1.16.0 release notes.
+  
+### Deploying to JCenter
+
+Deployment to JCenter uses the bintray gradle plugin. This may be replaced in the future,
+and deployment may be automated to occur when a new tag is applied in git. For now it's
+a manual process:
+
+Update the version number in `sceneformux/buildSrc/Versions.kt. We use semantic versioning.
+Add a file called 'bintray.properties' in the `sceneformux` directory, containing:
+
+```
+bintrayUser=xxx
+bintrayApiKey=xxx
+```
+substituting appropriate values with permissions to publish to the sceneform-android-sdk
+bintray repository. This file is .gitignored.
+
+To publish to bintray/JCenter, from the `sceneformux` directory:
+
+```sh
+./gradlew clean assembleRelease bintrayUpload
+```  
+ 
+ 
 
 Sceneform SDK for Android
 =========================
