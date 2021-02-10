@@ -16,7 +16,6 @@
 
 package com.google.flatbuffers;
 
-import static com.google.flatbuffers.Constants.*;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.Charset;
@@ -93,7 +92,7 @@ public class Table {
   protected String __string(int offset) {
     offset += bb.getInt(offset);
     int length = bb.getInt(offset);
-    return utf8.decodeUtf8(bb, offset + SIZEOF_INT, length);
+    return utf8.decodeUtf8(bb, offset + Constants.SIZEOF_INT, length);
   }
 
   /**
@@ -116,7 +115,7 @@ public class Table {
    */
   protected int __vector(int offset) {
     offset += bb_pos;
-    return offset + bb.getInt(offset) + SIZEOF_INT;  // data starts after the length
+    return offset + bb.getInt(offset) + Constants.SIZEOF_INT;  // data starts after the length
   }
 
   /**
@@ -186,11 +185,11 @@ public class Table {
    * @return True if the buffer contains the file identifier
    */
   protected static boolean __has_identifier(ByteBuffer bb, String ident) {
-    if (ident.length() != FILE_IDENTIFIER_LENGTH)
+    if (ident.length() != Constants.FILE_IDENTIFIER_LENGTH)
         throw new AssertionError("FlatBuffers: file identifier must be length " +
-                                 FILE_IDENTIFIER_LENGTH);
-    for (int i = 0; i < FILE_IDENTIFIER_LENGTH; i++) {
-      if (ident.charAt(i) != (char)bb.get(bb.position() + SIZEOF_INT + i)) return false;
+                                 Constants.FILE_IDENTIFIER_LENGTH);
+    for (int i = 0; i < Constants.FILE_IDENTIFIER_LENGTH; i++) {
+      if (ident.charAt(i) != (char)bb.get(bb.position() + Constants.SIZEOF_INT + i)) return false;
     }
     return true;
   }
@@ -233,8 +232,8 @@ public class Table {
     offset_2 += bb.getInt(offset_2);
     int len_1 = bb.getInt(offset_1);
     int len_2 = bb.getInt(offset_2);
-    int startPos_1 = offset_1 + SIZEOF_INT;
-    int startPos_2 = offset_2 + SIZEOF_INT;
+    int startPos_1 = offset_1 + Constants.SIZEOF_INT;
+    int startPos_2 = offset_2 + Constants.SIZEOF_INT;
     int len = Math.min(len_1, len_2);
     for(int i = 0; i < len; i++) {
       if (bb.get(i + startPos_1) != bb.get(i + startPos_2))
