@@ -7,7 +7,10 @@ The original contents of this README from the 1.16.0 open source release from
 Google are preserved at the bottom of this document, though users of Streem's 
 fork should follow the installation instructions below.
 
-The current version of Streem's fork is 1.18.0.
+The current version of Streem's fork is 2.0.0. We incremented the version number
+to 2.0.0 in this release because it contains breaking changes, specifically that
+all classes are now in the "pro.streem" namespace rather than "com.google". This
+is to allow usage in apps that have a dependency on other versions of Sceneform.
 
 ### Installation
 
@@ -26,8 +29,8 @@ Add sceneform-ux and core to your dependencies in your module `build.gradle` fil
 ```gradle
 dependencies {
     ...
-    implementation "pro.streem.sceneform:core:1.18.0"
-    implementation "pro.streem.sceneform.ux:sceneform-ux:1.18.0"
+    implementation "pro.streem.sceneform:core:2.0.0"
+    implementation "pro.streem.sceneform.ux:sceneform-ux:2.0.0"
     ...
 }
 ```
@@ -35,13 +38,21 @@ dependencies {
 If your project's minimum SDK version is less than 24, add this to your AndroidManifest:
 
 ```
-    <uses-sdk tools:overrideLibrary="com.google.ar.sceneform, com.google.ar.sceneform.ux"/>
+    <uses-sdk tools:overrideLibrary="pro.streem.ar.sceneform, pro.streem.ar.sceneform.ux"/>
 ```
 In this case it is your responsibility to check the current device's SDK level at runtime
 before using Sceneform functionality. If you try to use Sceneform on a device with SDK
 less than 24 it may crash your app.
 
 ### Changelog
+
+### 2.0.0
+
+* Moved all classes from "com.google" package to "pro.streem" package. This is a breaking
+  change, and you will need to update your references to classes accordingly.
+* Updated to ARCore 1.22.0 and Filament 1.9.11.
+* Generated new .matc material files.
+* Updated Google Material library to 1.3.0.
 
 #### 1.18.0
 
