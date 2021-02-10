@@ -16,8 +16,6 @@
 
 package com.google.flatbuffers;
 
-import static com.google.flatbuffers.Constants.*;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.*;
@@ -268,7 +266,7 @@ public class FlatBufferBuilder {
    /**
     * Prepare to write an element of `size` after `additional_bytes`
     * have been written, e.g. if you write a string, you need to align such
-    * the int length field is aligned to {@link com.google.flatbuffers.Constants#SIZEOF_INT}, and
+    * the int length field is aligned to {@link Constants#SIZEOF_INT}, and
     * the string data follows it directly.  If all you need to do is alignment, `additional_bytes`
     * will be 0.
     *
@@ -406,9 +404,9 @@ public class FlatBufferBuilder {
     * @param off The offset to add.
     */
     public void addOffset(int off) {
-        prep(SIZEOF_INT, 0);  // Ensure alignment is already done.
+        prep(Constants.SIZEOF_INT, 0);  // Ensure alignment is already done.
         assert off <= offset();
-        off = offset() - off + SIZEOF_INT;
+        off = offset() - off + Constants.SIZEOF_INT;
         putInt(off);
     }
 
@@ -458,7 +456,7 @@ public class FlatBufferBuilder {
     public void startVector(int elem_size, int num_elems, int alignment) {
         notNested();
         vector_num_elems = num_elems;
-        prep(SIZEOF_INT, elem_size * num_elems);
+        prep(Constants.SIZEOF_INT, elem_size * num_elems);
         prep(alignment, elem_size * num_elems); // Just in case alignment > int.
         nested = true;
     }
@@ -820,7 +818,7 @@ public class FlatBufferBuilder {
 
         final int standard_fields = 2; // The fields below:
         addShort((short)(vtableloc - object_start));
-        addShort((short)((trimmed_size + standard_fields) * SIZEOF_SHORT));
+        addShort((short)((trimmed_size + standard_fields) * Constants.SIZEOF_SHORT));
 
         // Search for an existing vtable that matches the current one.
         int existing_vtable = 0;
@@ -830,7 +828,7 @@ public class FlatBufferBuilder {
             int vt2 = space;
             short len = bb.getShort(vt1);
             if (len == bb.getShort(vt2)) {
-                for (int j = SIZEOF_SHORT; j < len; j += SIZEOF_SHORT) {
+                for (int j = Constants.SIZEOF_SHORT; j < len; j += Constants.SIZEOF_SHORT) {
                     if (bb.getShort(vt1 + j) != bb.getShort(vt2 + j)) {
                         continue outer_loop;
                     }
@@ -883,7 +881,7 @@ public class FlatBufferBuilder {
      * @param size_prefix Whether to prefix the size to the buffer.
      */
     protected void finish(int root_table, boolean size_prefix) {
-        prep(minalign, SIZEOF_INT + (size_prefix ? SIZEOF_INT : 0));
+        prep(minalign, Constants.SIZEOF_INT + (size_prefix ? Constants.SIZEOF_INT : 0));
         addOffset(root_table);
         if (size_prefix) {
             addInt(bb.capacity() - space);
@@ -919,11 +917,11 @@ public class FlatBufferBuilder {
      * @param size_prefix Whether to prefix the size to the buffer.
      */
     protected void finish(int root_table, String file_identifier, boolean size_prefix) {
-        prep(minalign, SIZEOF_INT + FILE_IDENTIFIER_LENGTH + (size_prefix ? SIZEOF_INT : 0));
-        if (file_identifier.length() != FILE_IDENTIFIER_LENGTH)
+        prep(minalign, Constants.SIZEOF_INT + Constants.FILE_IDENTIFIER_LENGTH + (size_prefix ? Constants.SIZEOF_INT : 0));
+        if (file_identifier.length() != Constants.FILE_IDENTIFIER_LENGTH)
             throw new AssertionError("FlatBuffers: file identifier must be length " +
-                                     FILE_IDENTIFIER_LENGTH);
-        for (int i = FILE_IDENTIFIER_LENGTH - 1; i >= 0; i--) {
+                                     Constants.FILE_IDENTIFIER_LENGTH);
+        for (int i = Constants.FILE_IDENTIFIER_LENGTH - 1; i >= 0; i--) {
             addByte((byte)file_identifier.charAt(i));
         }
         finish(root_table, size_prefix);

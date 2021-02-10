@@ -47,14 +47,14 @@ android {
 }
 
 dependencies {
-    api("com.google.android.filament:filament-android:1.9.9")
-    api("com.google.android.filament:gltfio-android:1.9.9")
+    api("com.google.android.filament:filament-android:1.9.11")
+    api("com.google.android.filament:gltfio-android:1.9.11")
     implementation(files("../libs/libsceneform_runtime_schemas.jar"))
 
-    api("com.google.ar:core:1.21.0")
+    api("com.google.ar:core:1.22.0")
 
     implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("com.google.android.material:material:1.2.1")
+    implementation("com.google.android.material:material:1.3.0")
 }
 
 afterEvaluate {

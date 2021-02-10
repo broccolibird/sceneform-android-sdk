@@ -68,5 +68,3 @@ afterEvaluate {
 
 val compileUxAssets = tasks.registering {
 }
-
-//task("preBuild").dependsOn(compileUxAssets)
