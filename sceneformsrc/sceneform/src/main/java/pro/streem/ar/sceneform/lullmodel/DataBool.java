@@ -4,7 +4,8 @@ package pro.streem.ar.sceneform.lullmodel;
 
 import java.nio.*;
 
-import com.google.flatbuffers.*;
+import pro.streem.flatbuffers.FlatBufferBuilder;
+import pro.streem.flatbuffers.Table;
 
 @SuppressWarnings("unused")
 /**
@@ -19,7 +20,7 @@ public final class DataBool extends Table {
   public boolean value() { int o = __offset(4); return o != 0 ? 0!=bb.get(o + bb_pos) : false; }
 
   public static int createDataBool(FlatBufferBuilder builder,
-      boolean value) {
+                                   boolean value) {
     builder.startObject(1);
     DataBool.addValue(builder, value);
     return DataBool.endDataBool(builder);

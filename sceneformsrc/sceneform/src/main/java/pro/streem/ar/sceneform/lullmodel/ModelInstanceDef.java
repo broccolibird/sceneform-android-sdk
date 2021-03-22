@@ -4,7 +4,8 @@ package pro.streem.ar.sceneform.lullmodel;
 
 import java.nio.*;
 
-import com.google.flatbuffers.*;
+import pro.streem.flatbuffers.FlatBufferBuilder;
+import pro.streem.flatbuffers.Table;
 
 @SuppressWarnings("unused")
 /**
@@ -90,18 +91,18 @@ public final class ModelInstanceDef extends Table {
   public int aabbsLength() { int o = __offset(26); return o != 0 ? __vector_len(o) : 0; }
 
   public static int createModelInstanceDef(FlatBufferBuilder builder,
-      int vertex_dataOffset,
-      int indices16Offset,
-      int indices32Offset,
-      int rangesOffset,
-      int materialsOffset,
-      int vertex_attributesOffset,
-      long num_vertices,
-      boolean interleaved,
-      int shader_to_mesh_bonesOffset,
-      int blend_shapesOffset,
-      int blend_attributesOffset,
-      int aabbsOffset) {
+                                           int vertex_dataOffset,
+                                           int indices16Offset,
+                                           int indices32Offset,
+                                           int rangesOffset,
+                                           int materialsOffset,
+                                           int vertex_attributesOffset,
+                                           long num_vertices,
+                                           boolean interleaved,
+                                           int shader_to_mesh_bonesOffset,
+                                           int blend_shapesOffset,
+                                           int blend_attributesOffset,
+                                           int aabbsOffset) {
     builder.startObject(12);
     ModelInstanceDef.addAabbs(builder, aabbsOffset);
     ModelInstanceDef.addBlendAttributes(builder, blend_attributesOffset);

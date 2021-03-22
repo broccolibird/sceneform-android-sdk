@@ -1,6 +1,6 @@
 object Versions {
     // Sceneform
-    const val sceneformVersion = "2.0.0"
+    const val sceneformVersion = "2.0.1"
 
     // Android build
     const val androidGradle = "4.1.1"

@@ -5,9 +5,9 @@ import pro.streem.ar.sceneform.collision.Box;
 import pro.streem.ar.sceneform.collision.CollisionShape;
 import pro.streem.ar.sceneform.collision.Sphere;
 import pro.streem.ar.sceneform.math.Vector3;
-import com.google.ar.schemas.sceneform.CollisionShapeType;
-import com.google.ar.schemas.sceneform.SceneformBundleDef;
-import com.google.ar.schemas.sceneform.SuggestedCollisionShapeDef;
+import pro.streem.ar.schemas.sceneform.CollisionShapeType;
+import pro.streem.ar.schemas.sceneform.SceneformBundleDef;
+import pro.streem.ar.schemas.sceneform.SuggestedCollisionShapeDef;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 

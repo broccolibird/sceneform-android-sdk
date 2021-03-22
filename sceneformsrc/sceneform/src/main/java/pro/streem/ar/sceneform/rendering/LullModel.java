@@ -4,10 +4,11 @@ import android.util.Log;
 import com.google.android.filament.TextureSampler.MagFilter;
 import com.google.android.filament.TextureSampler.MinFilter;
 import com.google.android.filament.TextureSampler.WrapMode;
-import com.google.ar.schemas.lull.ModelInstanceDef;
-import com.google.ar.schemas.lull.TextureFiltering;
-import com.google.ar.schemas.lull.VertexAttribute;
-import com.google.ar.schemas.lull.VertexAttributeType;
+import pro.streem.ar.schemas.lull.ModelInstanceDef;
+import pro.streem.ar.schemas.lull.TextureFiltering;
+import pro.streem.ar.schemas.lull.VertexAttribute;
+import pro.streem.ar.schemas.lull.TextureDef;
+import pro.streem.ar.schemas.lull.VertexAttributeType;
 import java.nio.ByteBuffer;
 
 /**
@@ -66,7 +67,7 @@ public class LullModel {
     return bytesPerVertex;
   }
 
-  public static MinFilter fromLullToMinFilter(com.google.ar.schemas.lull.TextureDef textureDef) {
+  public static MinFilter fromLullToMinFilter(TextureDef textureDef) {
     switch (textureDef.minFilter()) {
       case TextureFiltering.Nearest:
         return MinFilter.NEAREST;
@@ -89,7 +90,7 @@ public class LullModel {
     return MinFilter.NEAREST;
   }
 
-  public static MagFilter fromLullToMagFilter(com.google.ar.schemas.lull.TextureDef textureDef) {
+  public static MagFilter fromLullToMagFilter(TextureDef textureDef) {
     switch (textureDef.magFilter()) {
       case TextureFiltering.Nearest:
         return MagFilter.NEAREST;

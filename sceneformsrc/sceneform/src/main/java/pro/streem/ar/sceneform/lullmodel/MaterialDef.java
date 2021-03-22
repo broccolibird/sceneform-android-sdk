@@ -4,7 +4,8 @@ package pro.streem.ar.sceneform.lullmodel;
 
 import java.nio.*;
 
-import com.google.flatbuffers.*;
+import pro.streem.flatbuffers.FlatBufferBuilder;
+import pro.streem.flatbuffers.Table;
 
 @SuppressWarnings("unused")
 /**
@@ -39,9 +40,9 @@ public final class MaterialDef extends Table {
   public int texturesLength() { int o = __offset(8); return o != 0 ? __vector_len(o) : 0; }
 
   public static int createMaterialDef(FlatBufferBuilder builder,
-      int nameOffset,
-      int propertiesOffset,
-      int texturesOffset) {
+                                      int nameOffset,
+                                      int propertiesOffset,
+                                      int texturesOffset) {
     builder.startObject(3);
     MaterialDef.addTextures(builder, texturesOffset);
     MaterialDef.addProperties(builder, propertiesOffset);

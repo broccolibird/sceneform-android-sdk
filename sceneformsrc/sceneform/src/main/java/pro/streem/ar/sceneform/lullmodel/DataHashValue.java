@@ -4,7 +4,8 @@ package pro.streem.ar.sceneform.lullmodel;
 
 import java.nio.*;
 
-import com.google.flatbuffers.*;
+import pro.streem.flatbuffers.FlatBufferBuilder;
+import pro.streem.flatbuffers.Table;
 
 @SuppressWarnings("unused")
 /**
@@ -19,7 +20,7 @@ public final class DataHashValue extends Table {
   public long value() { int o = __offset(4); return o != 0 ? (long)bb.getInt(o + bb_pos) & 0xFFFFFFFFL : 0L; }
 
   public static int createDataHashValue(FlatBufferBuilder builder,
-      long value) {
+                                        long value) {
     builder.startObject(1);
     DataHashValue.addValue(builder, value);
     return DataHashValue.endDataHashValue(builder);
