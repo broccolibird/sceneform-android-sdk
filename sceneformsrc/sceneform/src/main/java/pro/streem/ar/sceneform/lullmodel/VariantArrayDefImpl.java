@@ -4,7 +4,8 @@ package pro.streem.ar.sceneform.lullmodel;
 
 import java.nio.*;
 
-import com.google.flatbuffers.*;
+import pro.streem.flatbuffers.FlatBufferBuilder;
+import pro.streem.flatbuffers.Table;
 
 @SuppressWarnings("unused")
 /**
@@ -21,8 +22,8 @@ public final class VariantArrayDefImpl extends Table {
   public Table value(Table obj) { int o = __offset(6); return o != 0 ? __union(obj, o) : null; }
 
   public static int createVariantArrayDefImpl(FlatBufferBuilder builder,
-      byte value_type,
-      int valueOffset) {
+                                              byte value_type,
+                                              int valueOffset) {
     builder.startObject(2);
     VariantArrayDefImpl.addValue(builder, valueOffset);
     VariantArrayDefImpl.addValueType(builder, value_type);

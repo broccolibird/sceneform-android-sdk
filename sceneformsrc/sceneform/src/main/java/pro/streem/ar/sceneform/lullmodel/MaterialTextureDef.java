@@ -4,7 +4,8 @@ package pro.streem.ar.sceneform.lullmodel;
 
 import java.nio.*;
 
-import com.google.flatbuffers.*;
+import pro.streem.flatbuffers.FlatBufferBuilder;
+import pro.streem.flatbuffers.Table;
 
 @SuppressWarnings("unused")
 public final class MaterialTextureDef extends Table {
@@ -27,9 +28,9 @@ public final class MaterialTextureDef extends Table {
   public ByteBuffer usagePerChannelInByteBuffer(ByteBuffer _bb) { return __vector_in_bytebuffer(_bb, 8, 4); }
 
   public static int createMaterialTextureDef(FlatBufferBuilder builder,
-      int nameOffset,
-      int usage,
-      int usage_per_channelOffset) {
+                                             int nameOffset,
+                                             int usage,
+                                             int usage_per_channelOffset) {
     builder.startObject(3);
     MaterialTextureDef.addUsagePerChannel(builder, usage_per_channelOffset);
     MaterialTextureDef.addUsage(builder, usage);

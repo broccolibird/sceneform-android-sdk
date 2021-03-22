@@ -4,7 +4,8 @@ package pro.streem.ar.sceneform.lullmodel;
 
 import java.nio.*;
 
-import com.google.flatbuffers.*;
+import pro.streem.flatbuffers.FlatBufferBuilder;
+import pro.streem.flatbuffers.Table;
 
 @SuppressWarnings("unused")
 /**
@@ -29,8 +30,8 @@ public final class ModelPipelineMaterialDef extends Table {
   public ByteBuffer nameOverrideInByteBuffer(ByteBuffer _bb) { return __vector_in_bytebuffer(_bb, 6, 1); }
 
   public static int createModelPipelineMaterialDef(FlatBufferBuilder builder,
-      int materialOffset,
-      int name_overrideOffset) {
+                                                   int materialOffset,
+                                                   int name_overrideOffset) {
     builder.startObject(2);
     ModelPipelineMaterialDef.addNameOverride(builder, name_overrideOffset);
     ModelPipelineMaterialDef.addMaterial(builder, materialOffset);

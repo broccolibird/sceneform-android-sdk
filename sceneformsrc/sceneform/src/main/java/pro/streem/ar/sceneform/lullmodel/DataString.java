@@ -4,7 +4,8 @@ package pro.streem.ar.sceneform.lullmodel;
 
 import java.nio.*;
 
-import com.google.flatbuffers.*;
+import pro.streem.flatbuffers.FlatBufferBuilder;
+import pro.streem.flatbuffers.Table;
 
 @SuppressWarnings("unused")
 /**
@@ -21,7 +22,7 @@ public final class DataString extends Table {
   public ByteBuffer valueInByteBuffer(ByteBuffer _bb) { return __vector_in_bytebuffer(_bb, 4, 1); }
 
   public static int createDataString(FlatBufferBuilder builder,
-      int valueOffset) {
+                                     int valueOffset) {
     builder.startObject(1);
     DataString.addValue(builder, valueOffset);
     return DataString.endDataString(builder);

@@ -4,7 +4,8 @@ package pro.streem.ar.sceneform.lullmodel;
 
 import java.nio.*;
 
-import com.google.flatbuffers.*;
+import pro.streem.flatbuffers.FlatBufferBuilder;
+import pro.streem.flatbuffers.Table;
 
 @SuppressWarnings("unused")
 /**
@@ -40,9 +41,9 @@ public final class ModelPipelineRenderableDef extends Table {
   public ByteBuffer attributesInByteBuffer(ByteBuffer _bb) { return __vector_in_bytebuffer(_bb, 8, 4); }
 
   public static int createModelPipelineRenderableDef(FlatBufferBuilder builder,
-      int sourceOffset,
-      int materialsOffset,
-      int attributesOffset) {
+                                                     int sourceOffset,
+                                                     int materialsOffset,
+                                                     int attributesOffset) {
     builder.startObject(3);
     ModelPipelineRenderableDef.addAttributes(builder, attributesOffset);
     ModelPipelineRenderableDef.addMaterials(builder, materialsOffset);

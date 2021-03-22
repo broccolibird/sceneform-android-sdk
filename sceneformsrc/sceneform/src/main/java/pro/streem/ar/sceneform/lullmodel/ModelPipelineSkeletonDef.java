@@ -4,7 +4,8 @@ package pro.streem.ar.sceneform.lullmodel;
 
 import java.nio.*;
 
-import com.google.flatbuffers.*;
+import pro.streem.flatbuffers.FlatBufferBuilder;
+import pro.streem.flatbuffers.Table;
 
 @SuppressWarnings("unused")
 /**
@@ -24,7 +25,7 @@ public final class ModelPipelineSkeletonDef extends Table {
   public ByteBuffer sourceInByteBuffer(ByteBuffer _bb) { return __vector_in_bytebuffer(_bb, 4, 1); }
 
   public static int createModelPipelineSkeletonDef(FlatBufferBuilder builder,
-      int sourceOffset) {
+                                                   int sourceOffset) {
     builder.startObject(1);
     ModelPipelineSkeletonDef.addSource(builder, sourceOffset);
     return ModelPipelineSkeletonDef.endModelPipelineSkeletonDef(builder);
