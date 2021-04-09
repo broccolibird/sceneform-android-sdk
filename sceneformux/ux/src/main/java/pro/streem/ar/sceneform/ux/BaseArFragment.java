@@ -173,7 +173,7 @@ public abstract class BaseArFragment extends Fragment
     public View onCreateView(
             LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         frameLayout =
-                (FrameLayout) inflater.inflate(R.layout.sceneform_ux_fragment_layout, container, false);
+                (FrameLayout) inflater.inflate(R.layout.streem_sceneform_ux_fragment_layout, container, false);
         arSceneView = (ArSceneView) frameLayout.findViewById(R.id.sceneform_ar_scene_view);
 
         // Setup the instructions view.
@@ -458,7 +458,7 @@ public abstract class BaseArFragment extends Fragment
 
     protected void setupSelectionRenderable(FootprintSelectionVisualizer selectionVisualizer) {
         ModelRenderable.builder()
-                .setSource(getActivity(), R.raw.sceneform_footprint)
+                .setSource(getActivity(), R.raw.streem_sceneform_footprint)
                 .setIsFilamentGltf(true)
                 .build()
                 .thenAccept(
@@ -579,7 +579,7 @@ public abstract class BaseArFragment extends Fragment
     @Nullable
 
     private View loadPlaneDiscoveryView(LayoutInflater inflater, @Nullable ViewGroup container) {
-        return inflater.inflate(R.layout.sceneform_plane_discovery_layout, container, false);
+        return inflater.inflate(R.layout.streem_sceneform_plane_discovery_layout, container, false);
     }
 
     private void onSingleTap(MotionEvent motionEvent) {

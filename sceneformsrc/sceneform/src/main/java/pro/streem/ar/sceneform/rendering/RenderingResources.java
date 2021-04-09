@@ -22,26 +22,26 @@ final class RenderingResources {
   private static int GetSceneformSourceResource(Context context, Resource resource) {
     switch (resource) {
       case CAMERA_MATERIAL:
-        return LoadHelper.rawResourceNameToIdentifier(context, "sceneform_camera_material");
+        return LoadHelper.rawResourceNameToIdentifier(context, "streem_sceneform_camera_material");
       case OPAQUE_COLORED_MATERIAL:
-        return LoadHelper.rawResourceNameToIdentifier(context, "sceneform_opaque_colored_material");
+        return LoadHelper.rawResourceNameToIdentifier(context, "streem_sceneform_opaque_colored_material");
       case TRANSPARENT_COLORED_MATERIAL:
         return LoadHelper.rawResourceNameToIdentifier(
-            context, "sceneform_transparent_colored_material");
+            context, "streem_sceneform_transparent_colored_material");
       case OPAQUE_TEXTURED_MATERIAL:
         return LoadHelper.rawResourceNameToIdentifier(
-            context, "sceneform_opaque_textured_material");
+            context, "streem_sceneform_opaque_textured_material");
       case TRANSPARENT_TEXTURED_MATERIAL:
         return LoadHelper.rawResourceNameToIdentifier(
-            context, "sceneform_transparent_textured_material");
+            context, "streem_sceneform_transparent_textured_material");
       case PLANE_SHADOW_MATERIAL:
-        return LoadHelper.rawResourceNameToIdentifier(context, "sceneform_plane_shadow_material");
+        return LoadHelper.rawResourceNameToIdentifier(context, "streem_sceneform_plane_shadow_material");
       case PLANE_MATERIAL:
-        return LoadHelper.rawResourceNameToIdentifier(context, "sceneform_plane_material");
+        return LoadHelper.rawResourceNameToIdentifier(context, "streem_sceneform_plane_material");
       case PLANE:
-        return LoadHelper.drawableResourceNameToIdentifier(context, "sceneform_plane");
+        return LoadHelper.drawableResourceNameToIdentifier(context, "streem_sceneform_plane");
       case VIEW_RENDERABLE_MATERIAL:
-        return LoadHelper.rawResourceNameToIdentifier(context, "sceneform_view_material");
+        return LoadHelper.rawResourceNameToIdentifier(context, "streem_sceneform_view_material");
     }
     return 0;
   }
