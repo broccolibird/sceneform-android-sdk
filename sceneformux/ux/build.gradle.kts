@@ -44,6 +44,8 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }
+
+    resourcePrefix = "streem_sceneform_"
 }
 
 dependencies {
