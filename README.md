@@ -7,7 +7,7 @@ The original contents of this README from the 1.16.0 open source release from
 Google are preserved at the bottom of this document, though users of Streem's 
 fork should follow the installation instructions below.
 
-The current version of Streem's fork is 2.0.1. We incremented the version number
+The current version of Streem's fork is 2.0.2. We incremented the version number
 to 2.0.x in a recent release because it contains breaking changes, specifically that
 all classes are now in the "pro.streem" namespace rather than "com.google". This
 is to allow usage in apps that have a dependency on other versions of Sceneform.
@@ -29,8 +29,8 @@ Add sceneform-ux and core to your dependencies in your module `build.gradle` fil
 ```gradle
 dependencies {
     ...
-    implementation "pro.streem.sceneform:core:2.0.1"
-    implementation "pro.streem.sceneform.ux:sceneform-ux:2.0.1"
+    implementation "pro.streem.sceneform:core:2.0.2"
+    implementation "pro.streem.sceneform.ux:sceneform-ux:2.0.2"
     ...
 }
 ```
@@ -45,6 +45,11 @@ before using Sceneform functionality. If you try to use Sceneform on a device wi
 less than 24 it may crash your app.
 
 ### Changelog
+
+### 2.0.2
+
+* Prefixed all resources with "streem_" to prevent resource collisions when used alongside
+  other Sceneform libraries.
 
 ### 2.0.1
 
