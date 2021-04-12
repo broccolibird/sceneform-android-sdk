@@ -50,6 +50,8 @@ less than 24 it may crash your app.
 
 * Prefixed all resources with "streem_" to prevent resource collisions when used alongside
   other Sceneform libraries.
+* Reverted Filament dependency to version 1.7.0 to maintain backward compatibility with
+  apps that also use Google's Sceneform 1.17.1 release.
 
 ### 2.0.1
 
