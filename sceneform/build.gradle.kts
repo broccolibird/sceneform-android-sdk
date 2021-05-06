@@ -6,7 +6,6 @@ plugins {
 }
 
 base {
-    group = "pro.streem.sceneform"
     archivesBaseName = "core"
 }
 
