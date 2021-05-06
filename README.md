@@ -19,6 +19,9 @@ Add the Maven Central repository to your project `build.gradle` file:
 ```gradle
 repositories {
     ...
+    // This repository is only needed if using a SNAPSHOT version of Sceneform
+    maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+
     mavenCentral()
     ...
 }
@@ -45,6 +48,9 @@ before using Sceneform functionality. If you try to use Sceneform on a device wi
 less than 24 it may crash your app.
 
 ### Changelog
+
+### 2.0.4 (Unreleased)
+
 
 ### 2.0.3
 
