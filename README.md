@@ -1,4 +1,4 @@
-## Streem's Sceneform Android SDK fork
+# Streem's Sceneform Android SDK fork
 
 This repository contains Streem's fork of Google's Sceneform Android SDK. Google
 is no longer developing Sceneform, and released most of the source.
@@ -12,7 +12,7 @@ to 2.0.x in a recent release because it contains breaking changes, specifically 
 all classes are now in the "pro.streem" namespace rather than "com.google". This
 is to allow usage in apps that have a dependency on other versions of Sceneform.
 
-### Installation
+## Installation
 
 Add the Maven Central repository to your project `build.gradle` file:
 
@@ -47,7 +47,7 @@ In this case it is your responsibility to check the current device's SDK level a
 before using Sceneform functionality. If you try to use Sceneform on a device with SDK
 less than 24 it may crash your app.
 
-### Changelog
+## Changelog
 
 ### 2.0.4 (Unreleased)
 
@@ -78,7 +78,7 @@ less than 24 it may crash your app.
 * Generated new .matc material files.
 * Updated Google Material library to 1.3.0.
 
-#### 1.18.0
+### 1.18.0
 
 * Updated to ARCore 1.21.0 and Filament 1.9.9.
 * Generated new .matc material files.
@@ -90,28 +90,35 @@ less than 24 it may crash your app.
   the need to add the corresponding source trees to your project as Google
   describes in the 1.16.0 release notes.
   
-### Deploying to JCenter
+## Deploying to Maven Central
 
-Deployment to JCenter uses the bintray gradle plugin. This may be replaced in the future,
-and deployment may be automated to occur when a new tag is applied in git. For now it's
-a manual process:
+Releases are handled automatically via CI once the git tag is created. We use semantic versioning.
 
-Update the version number in `sceneformux/buildSrc/Versions.kt. We use semantic versioning.
-Add a file called 'bintray.properties' in the `sceneformux` directory, containing:
-
-```
-bintrayUser=xxx
-bintrayApiKey=xxx
-```
-substituting appropriate values with permissions to publish to the sceneform-android-sdk
-bintray repository. This file is .gitignored.
-
-To publish to bintray/JCenter, from the `sceneformux` directory:
+Setup a couple shell variables to simplify the rest of the commands below:
 
 ```sh
-./gradlew clean assembleRelease bintrayUpload
-```  
- 
+export VERSION="2.0.1"
+export NEXT_VERSION="2.0.2"
+```
+
+To create a new release:
+1. Update the Sceneform version number in `gradle.properties` to remove the `SNAPSHOT` suffix. For example, if the current version is `2.0.1-SNAPSHOT`, then update it to be `2.0.1`.
+1. Update `README.md`:
+    * Update the version number in the instructions to the same version as in `gradle.properties` from the previous step.
+    * Add/update the changelog entry for this version with release notes and remove the "(Unreleased)" comment next to it.
+1. Commit the change. E.g.: `git commit -m "Bump to ${VERSION}" -a`.
+1. Tag the new version. E.g.: `git tag -a -m "See https://github.com/streem/sceneform-android-sdk/blob/v${VERSION}/README.md#changelog" "v${VERSION}"`.
+
+Then prepare the repository for development of the next version:
+1. Update the Sceneform version number in `gradle.properties` to `${NEXT_VERSION}-SNAPSHOT`. For example, `2.0.2-SNAPSHOT`.
+1. Update `README.md`: add an empty changelog entry for "NEXT\_VERSION (Unreleased)" that will follow the released version (e.g. if releasing `2.0.1` then add a section for `2.0.2`).
+1. Commit the change. E.g.: `git commit -m "Bump to ${NEXT_VERSION}-SNAPSHOT" -a`.
+
+GitHub will build and publish the new release once it sees the new tag:
+1. Push the changes to GitHub: `git push origin --follow-tags master`.
+1. Wait for CI to notice the new tag, build it, and upload it to Maven Central.
+1. Create a new release on GitHub. Use the contents of the tag description as the release description. E.g.: `gh release create "v${VERSION}" -F <(git tag -l --format='%(contents)' "v${VERSION}")`.
+
  
 
 Sceneform SDK for Android
