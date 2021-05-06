@@ -33,7 +33,7 @@ Add sceneform-ux and core to your dependencies in your module `build.gradle` fil
 dependencies {
     ...
     implementation "pro.streem.sceneform:core:2.0.3"
-    implementation "pro.streem.sceneform.ux:sceneform-ux:2.0.3"
+    implementation "pro.streem.sceneform:sceneform-ux:2.0.3"
     ...
 }
 ```
@@ -55,6 +55,7 @@ less than 24 it may crash your app.
 ### 2.0.3
 
 * Published to Maven Central.
+* Renamed the `pro.streem.sceneform.ux:sceneform-ux` maven artifact to `pro.streem.sceneform:sceneform-ux`.
 
 ### 2.0.2
 
