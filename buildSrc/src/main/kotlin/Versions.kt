@@ -12,6 +12,6 @@ object Versions {
 
     // Other
     const val nexusPublishGradlePlugin = "1.1.0"
-    const val filament = "1.7.0"
+    const val filament = "1.8.0"
     const val arCore = "1.22.0"
 }
