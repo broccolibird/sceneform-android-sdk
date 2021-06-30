@@ -7,7 +7,7 @@ The original contents of this README from the 1.16.0 open source release from
 Google are preserved at the bottom of this document, though users of Streem's 
 fork should follow the installation instructions below.
 
-The current version of Streem's fork is 2.0.3. We incremented the version number
+The current version of Streem's fork is 2.0.4. We incremented the version number
 to 2.0.x in a recent release because it contains breaking changes, specifically that
 all classes are now in the "pro.streem" namespace rather than "com.google". This
 is to allow usage in apps that have a dependency on other versions of Sceneform.
@@ -32,8 +32,8 @@ Add sceneform-ux and core to your dependencies in your module `build.gradle` fil
 ```gradle
 dependencies {
     ...
-    implementation "pro.streem.sceneform:core:2.0.3"
-    implementation "pro.streem.sceneform:sceneform-ux:2.0.3"
+    implementation "pro.streem.sceneform:core:2.0.4"
+    implementation "pro.streem.sceneform:sceneform-ux:2.0.4"
     ...
 }
 ```
@@ -49,8 +49,11 @@ less than 24 it may crash your app.
 
 ## Changelog
 
-### 2.0.4 (Unreleased)
+### 2.0.5 (Unreleased)
 
+### 2.0.4
+
+* Update Filament version from 1.7.0 to 1.8.0 and recompile .mat files accordingly
 
 ### 2.0.3
 
@@ -97,8 +100,8 @@ Releases are handled automatically via CI once the git tag is created. We use se
 Setup a couple shell variables to simplify the rest of the commands below:
 
 ```sh
-export VERSION="2.0.1"
-export NEXT_VERSION="2.0.2"
+export VERSION="2.0.4"
+export NEXT_VERSION="2.0.5"
 ```
 
 To create a new release:
@@ -110,7 +113,7 @@ To create a new release:
 1. Tag the new version. E.g.: `git tag -a -m "See https://github.com/streem/sceneform-android-sdk/blob/v${VERSION}/README.md#changelog" "v${VERSION}"`.
 
 Then prepare the repository for development of the next version:
-1. Update the Sceneform version number in `gradle.properties` to `${NEXT_VERSION}-SNAPSHOT`. For example, `2.0.2-SNAPSHOT`.
+1. Update the Sceneform version number in `gradle.properties` to `${NEXT_VERSION}-SNAPSHOT`. For example, `2.0.5-SNAPSHOT`.
 1. Update `README.md`: add an empty changelog entry for "NEXT\_VERSION (Unreleased)" that will follow the released version (e.g. if releasing `2.0.1` then add a section for `2.0.2`).
 1. Commit the change. E.g.: `git commit -m "Bump to ${NEXT_VERSION}-SNAPSHOT" -a`.
 
