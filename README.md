@@ -114,7 +114,7 @@ To create a new release:
 
 Then prepare the repository for development of the next version:
 1. Update the Sceneform version number in `gradle.properties` to `${NEXT_VERSION}-SNAPSHOT`. For example, `2.0.5-SNAPSHOT`.
-1. Update `README.md`: add an empty changelog entry for "NEXT\_VERSION (Unreleased)" that will follow the released version (e.g. if releasing `2.0.1` then add a section for `2.0.2`).
+1. Update `README.md`: add an empty changelog entry for "NEXT\_VERSION (Unreleased)" that will follow the released version (e.g. if releasing `2.0.4` then add a section for `2.0.5`).
 1. Commit the change. E.g.: `git commit -m "Bump to ${NEXT_VERSION}-SNAPSHOT" -a`.
 
 GitHub will build and publish the new release once it sees the new tag:
