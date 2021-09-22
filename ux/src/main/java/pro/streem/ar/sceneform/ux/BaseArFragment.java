@@ -345,15 +345,33 @@ public abstract class BaseArFragment extends Fragment
         this.canRequestDangerousPermissions = canRequestDangerousPermissions;
     }
 
+    // When true, this shifts starting and stopping of AR functions from onResume()/onPause()
+    // to onStart()/onStop(), so that AR can continue working when the app is displayed in
+    // picture in picture mode, for instance.
+    protected boolean supportsMultiWindow = false;
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (supportsMultiWindow) {
+            startAr();
+        }
+    }
+
     @Override
     public void onResume() {
         super.onResume();
+        if (!supportsMultiWindow) {
+            startAr();
+        }
+    }
+
+    private void startAr() {
         if (isArRequired() && arSceneView.getSession() == null) {
             initializeSession();
         }
         start();
     }
-
 
     protected final boolean requestInstall() throws UnavailableException {
         switch (ArCoreApk.getInstance().requestInstall(requireActivity(), !installRequested)) {
@@ -514,7 +532,17 @@ public abstract class BaseArFragment extends Fragment
     @Override
     public void onPause() {
         super.onPause();
-        stop();
+        if (!supportsMultiWindow) {
+            stop();
+        }
+    }
+
+    @Override
+    public void onStop() {
+        if (supportsMultiWindow) {
+            stop();
+        }
+        super.onStop();
     }
 
     @Override
