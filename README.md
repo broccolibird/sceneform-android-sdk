@@ -49,6 +49,8 @@ less than 24 it may crash your app.
 
 ## Changelog
 
+### 2.0.6 (Unreleased)
+
 ### 2.0.5
 
 * Added optional support for continuing AR features in multi-window and picture in picture
