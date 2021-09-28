@@ -81,7 +81,7 @@ public class Scene extends NodeParent {
 
   private static final String TAG = Scene.class.getSimpleName();
   private static final String DEFAULT_LIGHTPROBE_ASSET_NAME = "small_empty_house_2k";
-  private static final String DEFAULT_LIGHTPROBE_RESOURCE_NAME = "sceneform_default_light_probe";
+  private static final String DEFAULT_LIGHTPROBE_RESOURCE_NAME = "streem_sceneform_default_light_probe";
   private static final float DEFAULT_EXPOSURE = 1.0f;
   public static final EnvironmentalHdrParameters DEFAULT_HDR_PARAMETERS =
       EnvironmentalHdrParameters.makeDefault();
